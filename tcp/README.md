@@ -70,3 +70,6 @@ TCP 是全双工模式，这就意味着，当主机1发出 FIN 报文段时，�
 - LAST_ACK: 这个状态还是比较容易好理解的，它是被动关闭一方在发送 FIN 报文后，最后等待对方的 ACK 报文。当收到 ACK 报文后，也即可以进入到 CLOSED 可用状态了。（被动方）
 - TIME_WAIT: 表示收到了对方的 FIN 报文，并发送出了 ACK 报文，就等 2MSL 后即可回到 CLOSED 可用状态了。如果 FINWAIT1 状态下，收到了对方同时带 FIN 标志和 ACK 标志的报文时，可以直接进入到 TIME_WAIT状态，而无须经过 FIN_WAIT_2状态。（主动方）
 - CLOSED: 表示连接中断。
+
+## References
+[通俗大白话来理解TCP协议的三次握手和四次分手](https://github.com/jawil/blog/issues/14)
