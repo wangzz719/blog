@@ -5,7 +5,7 @@ netstat 可用于列出系统上所有的网络套接字连接情况，包括 tc
 
 ## 命令格式：
 
-netstat [-acCeFghilMnNoprstuvVwx][-A<网络类型>][--ip]
+`netstat [-acCeFghilMnNoprstuvVwx][-A<网络类型>][--ip]`
 
 ## 命令功能：
 

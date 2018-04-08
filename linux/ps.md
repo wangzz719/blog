@@ -5,11 +5,11 @@ Linux中的ps命令是Process Status的缩写。ps命令用来列出系统中当
 
 ## ps工具标识进程的5种状态码
 
-D 不可中断 uninterruptible sleep (usually IO)
-R 运行 runnable (on run queue)
-S 中断 sleeping
-T 停止 traced or stopped
-Z 僵死 a defunct (”zombie”) process
+- D 不可中断 uninterruptible sleep (usually IO)
+- R 运行 runnable (on run queue)
+- S 中断 sleeping
+- T 停止 traced or stopped
+- Z 僵死 a defunct (”zombie”) process
 
 ## ps 命令参数
 - a 显示所有进程
