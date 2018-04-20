@@ -1,11 +1,8 @@
 # 个人博客
 ## 目录
-### redis
-redis 相关技术汇总
-- [redis 分布式锁](./redis/distributed_lock.md)
+### [redis](./redis)
 
-### vue
-- [vue+webpack](./vue/vue_webpack.md)
+### [vue](./vue)
 
 ### [linux](./linux)
 
