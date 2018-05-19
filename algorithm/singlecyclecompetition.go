@@ -29,6 +29,7 @@ func singleCycleCompetition(athletes []int) {
 		newAthletes := athletes[fakeLen-1 : fakeLen]
 		newAthletes = append(newAthletes, athletes[1:fakeLen-1]...)
 		newAthletes = append(firstAthletes, newAthletes...)
+		fmt.Println(newAthletes)
 	}
 }
 
@@ -71,7 +72,7 @@ func singleCycleCompetitionBergerAlgorithm(athletes []int) {
 			newAthletes = append(newAthletes, lastAthletes)
 			athletes = newAthletes
 		}
-
+		fmt.Println(athletes)
 	}
 }
 
