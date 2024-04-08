@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-
 // 动态规划求解最少硬币数满足凑够 sum
 // 总和为 i 时需要的最少硬币数为 i 减去硬币面值时需要的最少硬币数加 1
 // l[i] = min {l[i-k] + 1| i-k >0 and k in CoinValues}
@@ -16,6 +15,7 @@ func leastCoins(sum int, coinValues []int) ([]int, int) {
 	sumCoins := make(map[int]int)
 	result := make([]int, 0)
 	count := make([]int, sum+1, sum+1)
+
 	count[0] = 0
 	for i := 1; i <= sum; i++ {
 		minCount := sum
@@ -27,17 +27,22 @@ func leastCoins(sum int, coinValues []int) ([]int, int) {
 				if tmp < minCount {
 					minCount = tmp
 					coin = v
-
 				}
 			}
 		}
+
 		count[i] = minCount
 		sumCoins[i] = coin
 	}
+
+	fmt.Println(sumCoins)
+	fmt.Println(count)
+
 	for sum > 0 {
 		result = append(result, sumCoins[sum])
 		sum -= sumCoins[sum]
 	}
+
 	return result, len(result)
 }
 
