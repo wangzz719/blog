@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/wangzz719/blog/model"
+	"github.com/wangzz719/blog/algorithm/model"
 )
 
-func rightSideView(root *model.TreeNode) []int {
+func rightSideView(root *model.TreeNode[int]) []int {
 	res := make([]int, 0)
 	if root == nil {
 		return res
@@ -17,7 +17,7 @@ func rightSideView(root *model.TreeNode) []int {
 	return res
 }
 
-func search(node *model.TreeNode, view *[]int, depth int) {
+func search(node *model.TreeNode[int], view *[]int, depth int) {
 	if node == nil {
 		return
 	}
@@ -26,21 +26,21 @@ func search(node *model.TreeNode, view *[]int, depth int) {
 		*view = append(*view, node.Val)
 	}
 
-	search(node.Right, view, depth + 1)
-	search(node.Left, view, depth + 1)
+	search(node.Right, view, depth+1)
+	search(node.Left, view, depth+1)
 }
 
 func main() {
-	root := &model.TreeNode{
+	root := &model.TreeNode[int]{
 		Val: 1,
-		Left: &model.TreeNode{
+		Left: &model.TreeNode[int]{
 			Val: 2,
-			Left: &model.TreeNode{
+			Left: &model.TreeNode[int]{
 				Val:   4,
 				Left:  nil,
 				Right: nil,
 			},
-			Right: &model.TreeNode{
+			Right: &model.TreeNode[int]{
 				Val:   3,
 				Left:  nil,
 				Right: nil,

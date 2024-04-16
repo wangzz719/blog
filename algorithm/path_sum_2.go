@@ -3,14 +3,14 @@ package main
 import (
 	"fmt"
 
-	"github.com/wangzz719/blog/model"
+	"github.com/wangzz719/blog/algorithm/model"
 )
 
 /**
  * Definition for a binary tree node.
  */
 
-func pathSum(root *model.TreeNode, targetSum int) [][]int {
+func pathSum(root *model.TreeNode[int], targetSum int) [][]int {
 	res := make([][]int, 0)
 	if root == nil {
 		return res
@@ -22,7 +22,7 @@ func pathSum(root *model.TreeNode, targetSum int) [][]int {
 	return res
 }
 
-func dfs(root *model.TreeNode, targetSum int, res *[][]int, carry []int) {
+func dfs(root *model.TreeNode[int], targetSum int, res *[][]int, carry []int) {
 	carry = append(carry, root.Val)
 	targetSum = targetSum - root.Val
 
@@ -47,20 +47,19 @@ func dfs(root *model.TreeNode, targetSum int, res *[][]int, carry []int) {
 	}
 }
 
-
 func main() {
-	root := &model.TreeNode{
+	root := &model.TreeNode[int]{
 		Val: 5,
-		Left: &model.TreeNode{
+		Left: &model.TreeNode[int]{
 			Val: 4,
-			Left: &model.TreeNode{
+			Left: &model.TreeNode[int]{
 				Val: 11,
-				Left: &model.TreeNode{
+				Left: &model.TreeNode[int]{
 					Val:   7,
 					Left:  nil,
 					Right: nil,
 				},
-				Right: &model.TreeNode{
+				Right: &model.TreeNode[int]{
 					Val:   2,
 					Left:  nil,
 					Right: nil,
@@ -68,21 +67,21 @@ func main() {
 			},
 			Right: nil,
 		},
-		Right: &model.TreeNode{
+		Right: &model.TreeNode[int]{
 			Val: 8,
-			Left: &model.TreeNode{
+			Left: &model.TreeNode[int]{
 				Val:   13,
 				Left:  nil,
 				Right: nil,
 			},
-			Right: &model.TreeNode{
+			Right: &model.TreeNode[int]{
 				Val: 4,
-				Left: &model.TreeNode{
+				Left: &model.TreeNode[int]{
 					Val:   5,
 					Left:  nil,
 					Right: nil,
 				},
-				Right: &model.TreeNode{
+				Right: &model.TreeNode[int]{
 					Val:   1,
 					Left:  nil,
 					Right: nil,

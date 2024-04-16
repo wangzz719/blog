@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/wangzz719/blog/algorithm/model"
+)
 
 /*
 2. Add Two Numbers : https://leetcode.com/problems/add-two-numbers/description/
@@ -11,25 +15,20 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 */
 /**
  * Definition for singly-linked list.
- * type ListNode struct {
+ * type model.ListNode struct {
  *     Val int
- *     Next *ListNode
+ *     Next *model.ListNode
  * }
  */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+func addTwoNumbers(l1 *model.ListNode, l2 *model.ListNode) *model.ListNode {
 	if l1 == nil {
 		return l2
 	}
 	if l2 == nil {
 		return l2
 	}
-	var result *ListNode
+	var result *model.ListNode
 	head := result
 
 	carry := 0
@@ -51,13 +50,13 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			l2 = l2.Next
 		}
 		if result == nil {
-			result = &ListNode{
+			result = &model.ListNode{
 				Val:  val,
 				Next: nil,
 			}
 			head = result
 		} else {
-			result.Next = &ListNode{
+			result.Next = &model.ListNode{
 				Val:  val,
 				Next: nil,
 			}
@@ -66,7 +65,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 
 	if carry != 0 {
-		result.Next = &ListNode{
+		result.Next = &model.ListNode{
 			Val:  carry,
 			Next: nil,
 		}
@@ -75,12 +74,13 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 
 func main() {
-	l1 := &ListNode{Val: 2, Next: &ListNode{Val: 4, Next: &ListNode{Val: 3, Next: nil}}}
-	l2 := &ListNode{Val: 5, Next: &ListNode{Val: 6, Next: &ListNode{Val: 4, Next: nil}}}
+	l1 := &model.ListNode{Val: 2, Next: &model.ListNode{Val: 4, Next: &model.ListNode{Val: 3, Next: nil}}}
+	l2 := &model.ListNode{Val: 5, Next: &model.ListNode{Val: 6, Next: &model.ListNode{Val: 4, Next: nil}}}
+
 	result := addTwoNumbers(l1, l2)
-	for result != nil {
+	for result.Next != nil {
 		fmt.Print(result.Val, "->")
 		result = result.Next
 	}
-	fmt.Println()
+	fmt.Print(result.Val, "\n")
 }

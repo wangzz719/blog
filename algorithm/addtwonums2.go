@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/wangzz719/blog/algorithm/model"
+)
 
 /*
 445. Add Two Numbers II : https://leetcode.com/problems/add-two-numbers-ii/description/
@@ -13,12 +17,7 @@ Follow up:
 What if you cannot modify the input lists? In other words, reversing the lists is not allowed.
 */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func addTwoNums2(l1 *ListNode, l2 *ListNode) *ListNode {
+func addTwoNums2(l1 *model.ListNode, l2 *model.ListNode) *model.ListNode {
 	if l1 == nil {
 		return l2
 	}
@@ -41,7 +40,7 @@ func addTwoNums2(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	l1Len := len(l1List)
 	l2Len := len(l2List)
-	var result *ListNode
+	var result *model.ListNode
 
 	var i, j int
 
@@ -50,12 +49,12 @@ func addTwoNums2(l1 *ListNode, l2 *ListNode) *ListNode {
 		val := (l1List[i] + l2List[j] + carry) % 10
 		carry = (l1List[i] + l2List[j] + carry) / 10
 		if result == nil {
-			result = &ListNode{
+			result = &model.ListNode{
 				Val:  val,
 				Next: nil,
 			}
 		} else {
-			newNode := &ListNode{
+			newNode := &model.ListNode{
 				Val:  val,
 				Next: result,
 			}
@@ -67,7 +66,7 @@ func addTwoNums2(l1 *ListNode, l2 *ListNode) *ListNode {
 		fmt.Println("i", i)
 		val := (l1List[i] + carry) % 10
 		carry = (l1List[i] + carry) / 10
-		newNode := &ListNode{
+		newNode := &model.ListNode{
 			Val:  val,
 			Next: result,
 		}
@@ -79,7 +78,7 @@ func addTwoNums2(l1 *ListNode, l2 *ListNode) *ListNode {
 		fmt.Println("j", j)
 		val := (l2List[j] + carry) % 10
 		carry = (l2List[j] + carry) / 10
-		newNode := &ListNode{
+		newNode := &model.ListNode{
 			Val:  val,
 			Next: result,
 		}
@@ -88,7 +87,7 @@ func addTwoNums2(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 
 	if carry > 0 {
-		newNode := &ListNode{
+		newNode := &model.ListNode{
 			Val:  carry,
 			Next: result,
 		}
@@ -97,14 +96,13 @@ func addTwoNums2(l1 *ListNode, l2 *ListNode) *ListNode {
 	return result
 }
 func main() {
+	l1 := &model.ListNode{Val: 7, Next: &model.ListNode{Val: 2, Next: &model.ListNode{Val: 4, Next: &model.ListNode{Val: 3, Next: nil}}}}
+	l2 := &model.ListNode{Val: 5, Next: &model.ListNode{Val: 6, Next: &model.ListNode{Val: 4, Next: nil}}}
 
-	l1 := &ListNode{Val: 7, Next: &ListNode{Val: 2, Next: &ListNode{Val: 4, Next: &ListNode{Val: 3, Next: nil}}}}
-	l2 := &ListNode{Val: 5, Next: &ListNode{Val: 6, Next: &ListNode{Val: 4, Next: nil}}}
 	result := addTwoNums2(l1, l2)
-
-	for result != nil {
+	for result.Next != nil {
 		fmt.Print(result.Val, "->")
 		result = result.Next
 	}
-	fmt.Println()
+	fmt.Print(result.Val, "\n")
 }

@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/wangzz719/blog/model"
+	"github.com/wangzz719/blog/algorithm/model"
 )
 
-func compare(left *model.TreeNode, right *model.TreeNode) bool {
+func compare(left *model.TreeNode[int], right *model.TreeNode[int]) bool {
 	switch {
 	case left == nil && right == nil:
 		return true
@@ -21,7 +21,7 @@ func compare(left *model.TreeNode, right *model.TreeNode) bool {
 	return compare(left.Left, right.Right) && compare(left.Right, right.Left)
 }
 
-func isSymmetric(root *model.TreeNode) bool {
+func isSymmetric(root *model.TreeNode[int]) bool {
 	if root == nil {
 		return true
 	}
@@ -30,14 +30,14 @@ func isSymmetric(root *model.TreeNode) bool {
 }
 
 func main() {
-	root := &model.TreeNode{
+	root := &model.TreeNode[int]{
 		Val: 1,
-		Left: &model.TreeNode{
+		Left: &model.TreeNode[int]{
 			Val:   2,
 			Left:  nil,
 			Right: nil,
 		},
-		Right: &model.TreeNode{
+		Right: &model.TreeNode[int]{
 			Val:   2,
 			Left:  nil,
 			Right: nil,
