@@ -15,7 +15,7 @@ type TreeNode[T any] struct {
 	Right *TreeNode[T]
 }
 
-func newTreeNode(v any) *TreeNode[any] {
+func NewTreeNode(v any) *TreeNode[any] {
 	return &TreeNode[any]{
 		Left:  nil, // 左子节点指针
 		Right: nil, // 右子节点指针
