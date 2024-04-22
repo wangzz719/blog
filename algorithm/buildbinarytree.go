@@ -2,17 +2,16 @@ package main
 
 import (
 	"fmt"
-	"math"
 
 	"github.com/wangzz719/blog/algorithm/model"
 )
 
-func buildTree(leafs []int, rootIndex int) *model.TreeNode[any] {
+func buildTree(leafs []any, rootIndex int) *model.TreeNode[any] {
 	if rootIndex >= len(leafs) {
 		return nil
 	}
 
-	if leafs[rootIndex] == math.MinInt {
+	if leafs[rootIndex] == nil {
 		return nil
 	}
 
@@ -24,7 +23,7 @@ func buildTree(leafs []int, rootIndex int) *model.TreeNode[any] {
 }
 
 func main() {
-	leafs := []int{1, 2, 3, math.MinInt, 4, 5}
+	leafs := []any{1, 2, 3, nil, 4, 5}
 	root := buildTree(leafs, 0)
 
 	fmt.Println(root.Left)
